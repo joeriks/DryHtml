@@ -9,7 +9,7 @@ namespace DryHtml
 {
     public class DryHtmlResult : ContentResult
     {
-        private DryHtmlDocument htmlDocument;
+        private DryHtml htmlDocument;
 
         public CsQuery.CQ DOM
         {
@@ -24,7 +24,7 @@ namespace DryHtml
         }
     
 
-        public DryHtmlDocument DryHtmlDocument
+        public DryHtml DryHtmlDocument
         {
             get { return htmlDocument; }
             set { htmlDocument = value; }
@@ -33,7 +33,7 @@ namespace DryHtml
         public DryHtmlResult(string templateFilePath)
         {
 
-            htmlDocument = new DryHtmlDocument(System.Web.HttpContext.Current.Server.MapPath(templateFilePath));
+            htmlDocument = new DryHtml(System.Web.HttpContext.Current.Server.MapPath(templateFilePath));
 
         }
         public void SetHtml(string xPath, string value)

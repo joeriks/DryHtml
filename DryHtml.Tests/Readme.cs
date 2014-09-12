@@ -9,7 +9,7 @@ using System.Web;
 
 namespace DryHtml.Tests
 {
-    public class Readme : DryHtmlDocument
+    public class Readme : DryHtml
     {
 
         public Readme(DocumentViewModel model)

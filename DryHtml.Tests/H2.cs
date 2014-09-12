@@ -6,13 +6,8 @@ using System.Threading.Tasks;
 
 namespace DryHtml.Tests
 {
-    public class H2 : DryHtmlDocument
+    public class H2 : DryHtml
     {
-        public H2(string header)
-        {
-            
-            this.DOM = String.Format("<h2>{0}</h2>", header);
-
-        }
+        public H2(string header) : base("<h2>{header}</h2>", new { header }) { }
     }
 }

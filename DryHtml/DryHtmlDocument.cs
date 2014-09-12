@@ -11,7 +11,7 @@ namespace DryHtml
     public static class DryHtmlExtensions
     {
         // @header/h1 --> //[@id='header']/h1
-        public static HtmlNode SelectSingleNode(this DryHtmlDocument document, string xpath)
+        public static HtmlNode SelectSingleNode(this DryHtml document, string xpath)
         {
             //if (dataDryHtml != "")
             //{
@@ -21,12 +21,12 @@ namespace DryHtml
             return document.HtmlDocument.DocumentNode.SelectSingleNode(xpath);
         }
 
-        public static string GetInnerText(this DryHtmlDocument document, string xpath)
+        public static string GetInnerText(this DryHtml document, string xpath)
         {
             xpath = xPathId(xpath);
             return SelectSingleNode(document, xpath).InnerText;
         }
-        public static void SetHtml(this DryHtmlDocument document, string xpath, string value)
+        public static void SetHtml(this DryHtml document, string xpath, string value)
         {
             xpath = xPathId(xpath);
             SelectSingleNode(document, xpath).InnerHtml = value;
@@ -49,7 +49,7 @@ namespace DryHtml
         //{
         //    return SelectSingleNode(document, idToXpath(id, xpath)).InnerText;
         //}
-        public static void SetHtml(this DryHtmlDocument document, string id, string xpath, string value)
+        public static void SetHtml(this DryHtml document, string id, string xpath, string value)
         {
             SelectSingleNode(document, idToXpath(id, xpath)).InnerHtml = value;
         }
@@ -57,7 +57,7 @@ namespace DryHtml
 
     }
 
-    public class DryHtmlDocument
+    public class DryHtml
     {
         private HtmlDocument _template;
 
@@ -74,8 +74,12 @@ namespace DryHtml
                 _dom = value;
             }
         }
-
-        public DryHtmlDocument(string templateFilePath = "")
+        public DryHtml(string template, object model)
+        {
+            _dom = new CsQuery.CQ();
+            _dom = template.TemplateReplace(model);
+        }
+        public DryHtml(string templateFilePath = "")
         {
 
             //_template = new HtmlDocument();

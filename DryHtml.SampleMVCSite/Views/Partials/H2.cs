@@ -7,11 +7,8 @@ using CsQuery.ExtensionMethods;
 
 namespace DryHtml.Views.Partials
 {
-    public class H2 : DryHtmlDocument
+    public class H2 : DryHtml
     {
-        public H2(string header)
-        {
-            this.DOM = String.Format("<h2>{0}</h2>", header);
-        }
+        public H2(string header) : base("<h2>{header}</h2>", new { header }){}
     }
 }
