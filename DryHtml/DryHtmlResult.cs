@@ -36,10 +36,6 @@ namespace DryHtml
             htmlDocument = new DryHtml(System.Web.HttpContext.Current.Server.MapPath(templateFilePath));
 
         }
-        public void SetHtml(string xPath, string value)
-        {
-            htmlDocument.SetHtml(xPath, value);
-        }
         public override void ExecuteResult(ControllerContext context)
         {
             base.Content = htmlDocument.Html.ToString();

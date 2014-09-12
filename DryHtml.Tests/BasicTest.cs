@@ -1,11 +1,12 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Reflection;
+using System.Diagnostics;
 
 namespace DryHtml.Tests
 {
     [TestClass]
-    public class UnitTest1
+    public class BasicTest
     {
         [TestMethod]
         public void TestMethod1()
@@ -13,8 +14,18 @@ namespace DryHtml.Tests
 
             // create the html document
 
+            var sp = new Stopwatch();
+            sp.Start();
+
             var model = new DocumentViewModel { Title = "Readme Title", Header = "This is a header", PartialHeader = "Header from partial" };
-            var readme = new Readme(model);
+            var readme = new ReadmeView(model);
+
+            Console.WriteLine(sp.ElapsedMilliseconds);
+
+            sp.Restart();
+            var model2 = new DocumentViewModel { Title = "Readme Title", Header = "This is a header", PartialHeader = "Header from partial" };
+            var readme2 = new ReadmeView(model2);
+            Console.WriteLine(sp.ElapsedMilliseconds);
 
             // get it back
 
