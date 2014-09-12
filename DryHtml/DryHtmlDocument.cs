@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace DryHtml
 {
@@ -60,16 +61,39 @@ namespace DryHtml
     {
         private HtmlDocument _template;
 
+        private CsQuery.CQ _dom;
+
+        public CsQuery.CQ DOM
+        {
+            get
+            {
+                return _dom;
+            }
+            set
+            {
+                _dom = value;
+            }
+        }
+
         public DryHtmlDocument(string templateFilePath = "")
         {
 
-            _template = new HtmlDocument();
+            //_template = new HtmlDocument();
+
+            _dom = new CsQuery.CQ();
 
             if (templateFilePath.Length > 255 || templateFilePath.Contains('<'))
             {
-                _template.LoadHtml(templateFilePath);
-            } else if (templateFilePath != "")
-                _template.Load(templateFilePath);
+                _dom = templateFilePath;
+
+            }
+            else if (templateFilePath != "")
+            {
+
+                var file = System.IO.File.ReadAllText(templateFilePath);
+                _dom = file;
+
+            }
         }
 
         public HtmlDocument HtmlDocument
@@ -83,15 +107,15 @@ namespace DryHtml
                 _template = value;
             }
         }
-        public String Html
+        public string Html
         {
             get
             {
-                return _template.DocumentNode.OuterHtml;
+                return _dom.Render();
             }
             set
             {
-                _template.LoadHtml(value);
+                _dom = value;
             }
         }
 

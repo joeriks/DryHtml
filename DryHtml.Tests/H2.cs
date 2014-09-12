@@ -10,7 +10,9 @@ namespace DryHtml.Tests
     {
         public H2(string header)
         {
-            this.Html = "<h2>" + header + "</h2>";
+            
+            this.DOM = String.Format("<h2>{0}</h2>", header);
+
         }
     }
 }

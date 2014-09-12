@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using DryHtml.Views.Partials;
 
 namespace DryHtml.Views
 {
@@ -15,9 +16,10 @@ namespace DryHtml.Views
             : base("~/Views/Templates/readme.html")
         {
 
-            this.SetHtml("//title", model.Title);
-            this.SetHtml("{header}/h1", model.Header);
-            this.SetHtml("{partial}", new Partials.H2(model.PartialHeader).Html);
+
+            this.DOM["title"].Text(model.Title);
+            this.DOM["#header > h1"].Text(model.Header);
+            this.DOM["#partial"].Html(new H2(model.PartialHeader).Html);
 
 
         }

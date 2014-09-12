@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using CsQuery.ExtensionMethods;
 
 namespace DryHtml.Views.Partials
 {
@@ -10,7 +11,7 @@ namespace DryHtml.Views.Partials
     {
         public H2(string header)
         {
-            this.Html = "<h2>" + header + "</h2>";
+            this.DOM = String.Format("<h2>{0}</h2>", header);
         }
     }
 }

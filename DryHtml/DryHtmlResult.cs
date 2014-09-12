@@ -10,6 +10,20 @@ namespace DryHtml
     public class DryHtmlResult : ContentResult
     {
         private DryHtmlDocument htmlDocument;
+
+        public CsQuery.CQ DOM
+        {
+            get
+            {
+                return htmlDocument.DOM;
+            }
+            set
+            {
+                htmlDocument.DOM = value;
+            }
+        }
+    
+
         public DryHtmlDocument DryHtmlDocument
         {
             get { return htmlDocument; }
@@ -28,7 +42,7 @@ namespace DryHtml
         }
         public override void ExecuteResult(ControllerContext context)
         {
-            base.Content = htmlDocument.Html;
+            base.Content = htmlDocument.Html.ToString();
             base.ExecuteResult(context);
         }
     }
