@@ -13,6 +13,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DryHtml.HtmlDiff", "DryHtml
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DryHtml.HtmlDiff.Tests", "DryHtml.HtmlDiff.Tests\DryHtml.HtmlDiff.Tests.csproj", "{258FBFBA-A15C-4494-A835-AF3CAA173C08}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DryHtml.ViewExtractor", "DryHtml.ViewExtractor\DryHtml.ViewExtractor.csproj", "{69CADC94-2EA6-486B-9955-AED9D9E8BE15}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DryHtml.ViewExtractor.Tests", "DryHtml.ViewExtractor.Tests\DryHtml.ViewExtractor.Tests.csproj", "{A4B03D68-20F7-47DD-A7E9-A07C8CCE3C08}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +43,14 @@ Global
 		{258FBFBA-A15C-4494-A835-AF3CAA173C08}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{258FBFBA-A15C-4494-A835-AF3CAA173C08}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{258FBFBA-A15C-4494-A835-AF3CAA173C08}.Release|Any CPU.Build.0 = Release|Any CPU
+		{69CADC94-2EA6-486B-9955-AED9D9E8BE15}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{69CADC94-2EA6-486B-9955-AED9D9E8BE15}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{69CADC94-2EA6-486B-9955-AED9D9E8BE15}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{69CADC94-2EA6-486B-9955-AED9D9E8BE15}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A4B03D68-20F7-47DD-A7E9-A07C8CCE3C08}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A4B03D68-20F7-47DD-A7E9-A07C8CCE3C08}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A4B03D68-20F7-47DD-A7E9-A07C8CCE3C08}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A4B03D68-20F7-47DD-A7E9-A07C8CCE3C08}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
