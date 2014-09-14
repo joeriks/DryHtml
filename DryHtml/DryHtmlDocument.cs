@@ -28,7 +28,7 @@ namespace DryHtml
         public DryHtml(string template, object model)
         {
             _dom = new CsQuery.CQ();
-            _dom = template.TemplateReplace(model);
+            _dom = template.Replace(model);
         }
         public DryHtml(string templateFilePath = "")
         {

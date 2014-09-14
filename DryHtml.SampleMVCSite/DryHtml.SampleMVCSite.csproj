@@ -165,8 +165,12 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Views\Readme.cs" />
+    <Compile Include="Controllers\RazorController.cs" />
+    <Compile Include="Views\Helpers\a.cs" />
+    <Compile Include="Views\Helpers\doubleHeader.cs" />
+    <Compile Include="Views\Helpers\hN.cs" />
     <Compile Include="Views\Partials\H2.cs" />
+    <Compile Include="Views\Readme.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -204,6 +208,10 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Razor\Index.cshtml" />
+    <Content Include="Views\Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
