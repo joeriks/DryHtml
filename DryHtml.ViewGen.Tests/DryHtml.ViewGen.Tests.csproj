@@ -50,7 +50,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="BasicGenerationTests.cs" />
+    <Compile Include="AutoViewTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -60,6 +60,12 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="SampleGeneratedStronglyTypedView2.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SampleGeneratedStronglyTypedView.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="SampleGeneratedView.cshtml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
