@@ -19,6 +19,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DryHtml.ViewGen", "DryHtml.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DryHtml.ViewGen.Tests", "DryHtml.ViewGen.Tests\DryHtml.ViewGen.Tests.csproj", "{A4B03D68-20F7-47DD-A7E9-A07C8CCE3C08}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DryHtml.VisualStudioCustomTool", "DryHtml.VisualStudioCustomTool\DryHtml.VisualStudioCustomTool.csproj", "{512E46C7-3AEC-4358-B4BC-3790A2D479D0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DryHtml.ViewGenConsole", "DryHtml.ViewGenConsole\DryHtml.ViewGenConsole.csproj", "{F7B4D5B6-2FEE-48EA-855E-773704C71589}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -53,6 +57,14 @@ Global
 		{A4B03D68-20F7-47DD-A7E9-A07C8CCE3C08}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A4B03D68-20F7-47DD-A7E9-A07C8CCE3C08}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A4B03D68-20F7-47DD-A7E9-A07C8CCE3C08}.Release|Any CPU.Build.0 = Release|Any CPU
+		{512E46C7-3AEC-4358-B4BC-3790A2D479D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{512E46C7-3AEC-4358-B4BC-3790A2D479D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{512E46C7-3AEC-4358-B4BC-3790A2D479D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{512E46C7-3AEC-4358-B4BC-3790A2D479D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F7B4D5B6-2FEE-48EA-855E-773704C71589}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7B4D5B6-2FEE-48EA-855E-773704C71589}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7B4D5B6-2FEE-48EA-855E-773704C71589}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7B4D5B6-2FEE-48EA-855E-773704C71589}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

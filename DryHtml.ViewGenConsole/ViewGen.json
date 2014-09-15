@@ -1,0 +1,24 @@
+﻿[
+    {
+        "ViewModel": {
+            "Prototype": "../prototypes/SamplePrototype.html",
+            "Selector": "#header",
+            "Name": "HeaderViewModel"
+        },
+        "Properties": [
+            {
+                "Name": "Header",
+                "Selector": "h1"
+            },
+            {
+                "Name": "Description",
+                "Selector": "p",
+                "Type":  "IHtmlString"
+            }
+        ],
+        "Output": {
+            "View": "../Views/HeaderViewModel.cshtml",
+            "ViewModel": "../Models/HeaderViewModel.cs"
+        }
+    }
+]
