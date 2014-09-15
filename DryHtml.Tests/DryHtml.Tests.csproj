@@ -71,7 +71,6 @@
     <Compile Include="BasicTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StopWatch.cs" />
-    <Compile Include="AutoViewTests.cs" />
     <Compile Include="DiffTests.cs" />
   </ItemGroup>
   <ItemGroup>

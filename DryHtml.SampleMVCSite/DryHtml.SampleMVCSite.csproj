@@ -166,6 +166,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\RazorController.cs" />
+    <Compile Include="Models\ReadmeHeaderViewModel.cs" />
     <Compile Include="Views\Helpers\a.cs" />
     <Compile Include="Views\Helpers\doubleHeader.cs" />
     <Compile Include="Views\Helpers\hN.cs" />
@@ -181,6 +182,7 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Prototypes\SamplePrototype.html" />
     <Content Include="Views\Templates\Readme.html" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -224,6 +226,10 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DryHtml.ViewGen\DryHtml.ViewGen.csproj">
+      <Project>{69cadc94-2ea6-486b-9955-aed9d9e8be15}</Project>
+      <Name>DryHtml.ViewGen</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DryHtml\DryHtml.csproj">
       <Project>{647e4e29-8f04-4925-821c-171364ed9d1d}</Project>
       <Name>DryHtml</Name>

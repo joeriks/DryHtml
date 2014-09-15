@@ -30,6 +30,7 @@ namespace DryHtml.ViewGen
         string csHtmlView;
         string selector;
         Type modelType;
+        string outputCsHtmlViewFileName;
         Dictionary<string, string> modelDescriber;
         public ViewGenerator(string prototypeHtml, Dictionary<string, string> modelDescriber)
         {
@@ -47,16 +48,17 @@ namespace DryHtml.ViewGen
         {
             this.modelType = modelType;
 
-            var modelAttribute = modelType.GetCustomAttribute<DryHtml.ViewModelSelectorAttribute>();
+            var modelAttribute = modelType.GetCustomAttribute<DryHtml.ViewModelGeneratorAttribute>();
 
             selector = modelAttribute.Selector;
 
-            var filename = modelAttribute.FilenameOrUrl;
-
-            if (!string.IsNullOrEmpty(filename))
+            if (!string.IsNullOrEmpty(modelAttribute.FilenameOrUrl))
             {
-                this.prototypeHtml = System.IO.File.ReadAllText(filename);
+                this.prototypeHtml = System.IO.File.ReadAllText(modelAttribute.FilenameOrUrl);
             }
+
+            if (!string.IsNullOrEmpty(modelAttribute.GenerateViewFileName))
+                outputCsHtmlViewFileName = modelAttribute.GenerateViewFileName;
 
             generateModelDescriberFromType();
         }
@@ -68,7 +70,7 @@ namespace DryHtml.ViewGen
             foreach (PropertyInfo pi in modelType.GetProperties())
             {
 
-                var viewModelPropertyAttribute = pi.GetCustomAttribute<ViewModelSelectorPropertyAttribute>();
+                var viewModelPropertyAttribute = pi.GetCustomAttribute<ViewModelPropertyAttribute>();
                 if (viewModelPropertyAttribute != null)
                 {
                     modelDescriber.Add(pi.Name, viewModelPropertyAttribute.Selector);
@@ -83,7 +85,7 @@ namespace DryHtml.ViewGen
 
             this.modelType = modelType;
 
-            var modelAttribute = modelType.GetCustomAttribute<DryHtml.ViewModelSelectorAttribute>();
+            var modelAttribute = modelType.GetCustomAttribute<DryHtml.ViewModelGeneratorAttribute>();
 
             selector = modelAttribute.Selector;
 

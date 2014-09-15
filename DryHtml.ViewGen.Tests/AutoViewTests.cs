@@ -56,12 +56,12 @@ namespace DryHtml.Tests
 
         }
 
-        [ViewModelSelector("SamplePrototype.html", "#header")]
+        [ViewModelGenerator("SamplePrototype.html", "#header")]
         public class ReadMeHeader2
         {
-            [ViewModelSelectorProperty("h1")]
+            [ViewModelProperty("h1")]
             public string Header { get; set; }
-            [ViewModelSelectorProperty("p")]
+            [ViewModelProperty("p")]
             public string Description { get; set; }
         }
 
@@ -90,12 +90,12 @@ namespace DryHtml.Tests
         }
 
 
-        [ViewModelSelector("#header")]
+        [ViewModelGenerator("#header")]
         public class ReadMeHeader
         {
-            [ViewModelSelectorProperty("h1")]
+            [ViewModelProperty("h1")]
             public string Header { get; set; }
-            [ViewModelSelectorProperty("p")]
+            [ViewModelProperty("p")]
             public string Description { get; set; }
         }
 
