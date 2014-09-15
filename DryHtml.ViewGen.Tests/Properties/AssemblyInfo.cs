@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("DryHtml.ViewExtractor")]
+[assembly: AssemblyTitle("DryHtml.ViewGen.Tests")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("DryHtml.ViewExtractor")]
+[assembly: AssemblyProduct("DryHtml.ViewGen.Tests")]
 [assembly: AssemblyCopyright("Copyright ©  2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("f6fb32d1-4439-413f-bc7c-0aa423fe6841")]
+[assembly: Guid("9be79b46-edc0-4fce-afb9-ffacea75a2aa")]
 
 // Version information for an assembly consists of the following four values:
 //

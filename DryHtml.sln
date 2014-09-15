@@ -13,9 +13,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DryHtml.HtmlDiff", "DryHtml
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DryHtml.HtmlDiff.Tests", "DryHtml.HtmlDiff.Tests\DryHtml.HtmlDiff.Tests.csproj", "{258FBFBA-A15C-4494-A835-AF3CAA173C08}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DryHtml.ViewExtractor", "DryHtml.ViewExtractor\DryHtml.ViewExtractor.csproj", "{69CADC94-2EA6-486B-9955-AED9D9E8BE15}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F22C4A84-45B4-4FD9-B5A7-FC438B14DDDE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DryHtml.ViewExtractor.Tests", "DryHtml.ViewExtractor.Tests\DryHtml.ViewExtractor.Tests.csproj", "{A4B03D68-20F7-47DD-A7E9-A07C8CCE3C08}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DryHtml.ViewGen", "DryHtml.ViewGen\DryHtml.ViewGen.csproj", "{69CADC94-2EA6-486B-9955-AED9D9E8BE15}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DryHtml.ViewGen.Tests", "DryHtml.ViewGen.Tests\DryHtml.ViewGen.Tests.csproj", "{A4B03D68-20F7-47DD-A7E9-A07C8CCE3C08}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
