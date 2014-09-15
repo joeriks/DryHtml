@@ -60,12 +60,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="SamplePrototype.html">
+    <None Include="SampleGeneratedView.cshtml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="SampleGenerated.cshtml">
+    <None Include="SamplePrototype.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
