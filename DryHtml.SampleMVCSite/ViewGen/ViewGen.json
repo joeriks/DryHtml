@@ -7,7 +7,7 @@
         },
         "Properties": [
             {
-                "Name": "Header",
+                "Name": "Header2",
                 "Selector": "h1"
             },
             {

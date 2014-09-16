@@ -50,6 +50,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="DictionaryViewTests.cs" />
     <Compile Include="JsonViewGenTests.cs" />
     <Compile Include="AutoViewTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
