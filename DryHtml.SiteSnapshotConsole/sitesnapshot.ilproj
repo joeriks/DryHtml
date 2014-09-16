@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Settings>
+  <!--Switches-->
+  <CopyAttributes Enabled="true" />
+  <UnionDuplicates Enabled="false" />
+  <Debug Enabled="1" />
+  <Internalize Enabled="false" />
+  <MergeXml Enabled="false" />
+  <!--Signing-->
+  <Sign Enabled="false" Delay="false"></Sign>
+  <!--Logging-->
+  <Log Enabled="false"></Log>
+  <!--Assemblies-->
+  <Assemblies>
+    <Assembly>F:\Jonas\Documents\GitHub\DryHtml\DryHtml.SiteSnapshotConsole\bin\Release\DryHtml.SiteDiff.dll</Assembly>
+    <Assembly>F:\Jonas\Documents\GitHub\DryHtml\DryHtml.SiteSnapshotConsole\bin\Release\DryHtml.SiteSnapshotConsole.exe</Assembly>
+    <Assembly>F:\Jonas\Documents\GitHub\DryHtml\DryHtml.SiteSnapshotConsole\bin\Release\Newtonsoft.Json.dll</Assembly>
+    <Assembly>F:\Jonas\Documents\GitHub\DryHtml\DryHtml.SiteSnapshotConsole\bin\Release\CsQuery.dll</Assembly>
+    <Primary>F:\Jonas\Documents\GitHub\DryHtml\DryHtml.SiteSnapshotConsole\bin\Release\DryHtml.SiteSnapshotConsole.exe</Primary>
+  </Assemblies>
+  <!--Output-->
+  <OutputAssembly>F:\Jonas\Documents\GitHub\GolvbranschenServices\Tools\SiteSnapshot.exe</OutputAssembly>
+  <!--.NET Framework-->
+  <Framework>.NET Framework 4.5 Full</Framework>
+  <!--Merge Engine-->
+  <Engine Name="ILMerge" />
+</Settings>
