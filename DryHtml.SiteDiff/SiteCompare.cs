@@ -19,11 +19,12 @@ namespace DryHtml.SiteDiff
         public class SiteCompareResult
         {
             public string path1 { get; set; }
-            public string path2 { get; set; }
+            public string path2 { get; set; }            
             public List<HtmlDiff.Comparer.Diff> Diffs { get; set; }
         }
 
         private string textReport;
+        private string[] excludeSelectors;
 
         public string TextReport
         {
@@ -39,7 +40,12 @@ namespace DryHtml.SiteDiff
             var report = new StringBuilder();
             var totalDiffs = 0;
             report.AppendLine("=======================");
-            report.AppendLine("Compare result");
+            report.AppendLine("Compare:");
+            report.AppendLine("Site 1: " + comparePath1);
+            report.AppendLine("Site 2: " + comparePath1);
+            report.AppendLine("Selector: " + selector);
+            if (excludeSelectors!=null)
+            report.AppendLine("Exclude selectors: " + string.Join(",",excludeSelectors));            
             report.AppendLine("=======================");
             foreach (var result in CompareResult)
             {
@@ -59,8 +65,8 @@ namespace DryHtml.SiteDiff
                     {
                         report.AppendLine("----------------------");
                         report.AppendLine("Selector: " + diff.selector);
-                        report.AppendLine("Html 1: " + maxLength(diff.compareSourceHtml, 15));
-                        report.AppendLine("Html 2: " + maxLength(diff.compareWithHtml, 15));
+                        report.AppendLine("Html 1: " + maxLength(diff.compareSourceHtml, 60));
+                        report.AppendLine("Html 2: " + maxLength(diff.compareWithHtml, 60));
                     }
                 }
                 report.AppendLine("=======================");
@@ -105,13 +111,14 @@ namespace DryHtml.SiteDiff
             return result;
         }
 
-        public SiteCompare(string comparePath1, string comparePath2, string[] urlList, string selector)
+        public SiteCompare(string comparePath1, string comparePath2, string[] urlList, string selector, string[] excludeSelectors = null)
         {
             // TODO: Complete member initialization
             this.comparePath1 = comparePath1;
             this.comparePath2 = comparePath2;
             this.urlList = urlList;
             this.selector = selector;
+            this.excludeSelectors = excludeSelectors;
             this.CompareResult = new List<SiteCompareResult>();
 
             foreach (var url in urlList)
@@ -123,7 +130,7 @@ namespace DryHtml.SiteDiff
                 var html1 = GetHtmlFromFileOrUrl(path1);
                 var html2 = GetHtmlFromFileOrUrl(path2);
 
-                var htmlDiff = new HtmlDiff.Comparer(html1, html2, selector);
+                var htmlDiff = new HtmlDiff.Comparer(html1, html2, selector, excludeSelectors);
 
                 this.CompareResult.Add(new SiteCompareResult
                 {
@@ -164,8 +171,6 @@ namespace DryHtml.SiteDiff
             }
 
 
-        }
-
-        //public List<HtmlDiff.Comparer.Diff> Diffs { get; set; }
+        }        
     }
 }

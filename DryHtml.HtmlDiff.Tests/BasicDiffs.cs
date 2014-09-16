@@ -41,5 +41,26 @@ namespace DryHtml.HtmlDiff.Tests
 
 
         }
+
+        [TestMethod]
+        public void ExcludeSelectors()
+        {
+            var html1 = "<html><body><p>A</p><p class='exclude'>C</p></html>";
+            var html2 = "<html><p>A</p><p class='exclude'>D</p></body></html>";
+            var x = new HtmlDiff.Comparer(html1, html2);
+            Assert.AreEqual("C", x.Diffs[0].compareSourceHtml);
+            Assert.AreEqual(true, x.Diffs[0].isText);
+            Assert.AreEqual("html > body > p.exclude", x.Diffs[0].selector);
+
+            Assert.AreEqual(1, x.Diffs.Count);
+
+            var excludeSelectors = new[] { ".exclude" };
+
+            var ex = new HtmlDiff.Comparer(html1, html2, "",excludeSelectors);
+
+            Assert.AreEqual(0, ex.Diffs.Count);
+
+        }
+
     }
 }

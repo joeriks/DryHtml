@@ -12,12 +12,14 @@ namespace DryHtml.HtmlDiff
         private string compareHtml;
         private string compareToHtml;
         private string selector;
+        private string[] excludeSelectors;
 
-        public Comparer(string compareHtml, string compareToHtml, string selector = "*")
+        public Comparer(string compareHtml, string compareToHtml, string selector = "*", string[] excludeSelectors = null)
         {
             this.compareHtml = compareHtml;
             this.compareToHtml = compareToHtml;
             this.selector = selector;
+            this.excludeSelectors = excludeSelectors;
             compare();
         }
 
@@ -142,10 +144,25 @@ namespace DryHtml.HtmlDiff
 
         }
 
+        bool isExcludedSelectors(IDomObject node)
+        {
+            if (excludeSelectors == null) return false;
+
+            var cq = new CQ(compareHtml).Select(selector);
+            
+            foreach (var excludeSelector in excludeSelectors)
+            {
+                var selExclude = cq.Select(excludeSelector);
+                if (selExclude.Any(n => n.NodeName == node.NodeName && n.NodePath.SequenceEqual(node.NodePath) && n.Attributes.SequenceEqual(node.Attributes))) return true;
+                
+            }
+            return false;
+        }
+
         bool TraverseNode(IDomObject node, IDomObject compareToNode, string path)
         {
             var result = true;
-            if (node != null && node.HasChildren)
+            if (node != null && node.HasChildren && !isExcludedSelectors(node))
                 foreach (IDomObject n in node.ChildNodes)
                 {
 
