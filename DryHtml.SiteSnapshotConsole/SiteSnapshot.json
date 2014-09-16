@@ -1,0 +1,6 @@
+﻿[{
+    "url": "http://www.wiki.se",
+    "urlList":  "/foo,/bar",
+    "selector":  "#content-primary",
+    "saveTo": "../../dump/1"
+}]

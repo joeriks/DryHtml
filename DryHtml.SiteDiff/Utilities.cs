@@ -12,9 +12,9 @@ namespace DryHtml.SiteDiff
     public static class Utilities
     {
 
-        public static CQ CQ(string pathOrUrl)
-        {
-            return new CQ(GetHtmlFromFileOrUrl(pathOrUrl));
+        public static CQ CQ(string pathOrUrl, bool utf8=true)
+        {            
+            return new CQ(GetHtmlFromFileOrUrl(pathOrUrl,utf8));
         }
         public static string GetFullPath(string pathOrUrl, string fileOrPath = "")
         {
@@ -26,14 +26,16 @@ namespace DryHtml.SiteDiff
             return Path.Combine(pathOrUrl, fileOrPath);
         }
 
-        public static string GetHtmlFromFileOrUrl(string fullPathOrUrl)
+        public static string GetHtmlFromFileOrUrl(string fullPathOrUrl, bool utf8 = true)
         {
 
             var result = "";
+            fullPathOrUrl = fullPathOrUrl.Trim();
             if (fullPathOrUrl.StartsWith("http"))
             {
                 using (var webClient = new WebClient())
                 {
+                    webClient.Encoding = Encoding.UTF8;
                     result = webClient.DownloadString(fullPathOrUrl);
                 }
             }

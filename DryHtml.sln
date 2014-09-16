@@ -29,7 +29,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{A3264479
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DryHtml.SiteDiffConsole", "DryHtml.SiteDiffConsole\DryHtml.SiteDiffConsole.csproj", "{0D5D2C0D-F1F4-4AE8-87CF-115943A67CAE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exclude.SiteTests", "Exclude.SiteTests\Exclude.SiteTests.csproj", "{BC1FC8CD-B151-4C38-A104-94FCA440D0F6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DryHtml.SiteSnapshotConsole", "DryHtml.SiteSnapshotConsole\DryHtml.SiteSnapshotConsole.csproj", "{1446BB5B-A58D-4440-A34F-8E2F80C922D4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -81,10 +81,10 @@ Global
 		{0D5D2C0D-F1F4-4AE8-87CF-115943A67CAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0D5D2C0D-F1F4-4AE8-87CF-115943A67CAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0D5D2C0D-F1F4-4AE8-87CF-115943A67CAE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BC1FC8CD-B151-4C38-A104-94FCA440D0F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BC1FC8CD-B151-4C38-A104-94FCA440D0F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BC1FC8CD-B151-4C38-A104-94FCA440D0F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BC1FC8CD-B151-4C38-A104-94FCA440D0F6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1446BB5B-A58D-4440-A34F-8E2F80C922D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1446BB5B-A58D-4440-A34F-8E2F80C922D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1446BB5B-A58D-4440-A34F-8E2F80C922D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1446BB5B-A58D-4440-A34F-8E2F80C922D4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

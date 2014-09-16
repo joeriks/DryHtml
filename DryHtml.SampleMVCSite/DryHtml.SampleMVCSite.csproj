@@ -186,7 +186,6 @@
     <Content Include="Prototypes\SamplePrototype.html" />
     <None Include="ViewGen\ViewGen.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <Generator>ViewGen</Generator>
     </None>
     <Content Include="Views\Templates\Readme.html" />
     <Content Include="favicon.ico" />
