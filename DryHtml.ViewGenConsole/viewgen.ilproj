@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Settings>
+  <!--Switches-->
+  <CopyAttributes Enabled="true" />
+  <UnionDuplicates Enabled="false" />
+  <Debug Enabled="1" />
+  <Internalize Enabled="false" />
+  <MergeXml Enabled="false" />
+  <!--Signing-->
+  <Sign Enabled="false" Delay="false"></Sign>
+  <!--Logging-->
+  <Log Enabled="false"></Log>
+  <!--Assemblies-->
+  <Assemblies>
+    <Assembly>F:\Jonas\Documents\GitHub\DryHtml\DryHtml.ViewGenConsole\bin\Debug\CsQuery.dll</Assembly>
+    <Assembly>F:\Jonas\Documents\GitHub\DryHtml\DryHtml.ViewGenConsole\bin\Debug\DryHtml.ViewExtractor.dll</Assembly>
+    <Assembly>F:\Jonas\Documents\GitHub\DryHtml\DryHtml.ViewGenConsole\bin\Debug\Newtonsoft.Json.dll</Assembly>
+    <Assembly>F:\Jonas\Documents\GitHub\DryHtml\DryHtml.ViewGenConsole\bin\Debug\ViewGen.exe</Assembly>
+    <Primary>F:\Jonas\Documents\GitHub\DryHtml\DryHtml.ViewGenConsole\bin\Debug\ViewGen.exe</Primary>
+  </Assemblies>
+  <!--Output-->
+  <OutputAssembly>c:\admin\ViewGen.exe</OutputAssembly>
+  <!--.NET Framework-->
+  <Framework>.NET Framework 4.5 Full</Framework>
+  <!--Merge Engine-->
+  <Engine Name="ILMerge" />
+</Settings>

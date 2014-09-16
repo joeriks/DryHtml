@@ -27,6 +27,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DryHtml.SiteDiff", "DryHtml
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DryHtml.SiteDiff.Tests", "DryHtml.SiteDiff.Tests\DryHtml.SiteDiff.Tests.csproj", "{03851753-2DA9-4418-8EFD-CED46856FEFF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DryHtml.ToolsMVCSite", "DryHtml.ToolsMVCSite\DryHtml.ToolsMVCSite.csproj", "{A4BFB24D-E91A-4AD1-AD45-A34553469008}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -77,6 +79,10 @@ Global
 		{03851753-2DA9-4418-8EFD-CED46856FEFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{03851753-2DA9-4418-8EFD-CED46856FEFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{03851753-2DA9-4418-8EFD-CED46856FEFF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A4BFB24D-E91A-4AD1-AD45-A34553469008}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A4BFB24D-E91A-4AD1-AD45-A34553469008}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A4BFB24D-E91A-4AD1-AD45-A34553469008}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A4BFB24D-E91A-4AD1-AD45-A34553469008}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

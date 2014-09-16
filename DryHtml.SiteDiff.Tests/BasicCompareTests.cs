@@ -6,6 +6,38 @@ namespace DryHtml.SiteDiff.Tests
     [TestClass]
     public class BasicCompareTests
     {
+
+        [TestMethod]
+        public void CompareWebSites()
+        {
+            var url1 = @"http://en.wikipedia.org/wiki/Sweden";
+            var url2 = @"http://en.wikipedia.org/wiki/Finland";
+
+            var selector = "*";
+
+            var siteCompare = new SiteCompare(url1, url2, selector);
+
+            Assert.IsNotNull(siteCompare);
+
+        }
+
+        [TestMethod]
+        public void CompareWebSitesMultipleUrls()
+        {
+            var url1 = @"http://en.wikipedia.org/wiki/";
+            var url2 = @"http://en.wikipedia.org/wiki/";
+
+            var urlList = new[] { "Sweden", "Finland" };
+
+            var selector = "*";
+
+            var siteCompare = new SiteCompare(url1, url2, urlList, selector);
+
+            Assert.IsNotNull(siteCompare);
+
+        }
+
+
         [TestMethod]
         public void CreateSnapshot()
         {
