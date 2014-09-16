@@ -54,14 +54,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="BasicDiffs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\DryHtml.HtmlDiff\DryHtml.HtmlDiff.csproj">
-      <Project>{22315874-8db5-4d89-884d-4b73325b5e65}</Project>
-      <Name>DryHtml.HtmlDiff</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

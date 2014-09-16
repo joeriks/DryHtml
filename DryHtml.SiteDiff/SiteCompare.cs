@@ -20,7 +20,7 @@ namespace DryHtml.SiteDiff
         {
             public string path1 { get; set; }
             public string path2 { get; set; }            
-            public List<HtmlDiff.Comparer.Diff> Diffs { get; set; }
+            public List<HtmlComparer.Diff> Diffs { get; set; }
         }
 
         private string textReport;
@@ -83,33 +83,7 @@ namespace DryHtml.SiteDiff
             return text;
         }
 
-        public string GetFullPath(string pathOrUrl, string fileOrPath = "")
-        {
-            if (pathOrUrl.StartsWith("http"))
-            {
-                if (!pathOrUrl.EndsWith("/")) pathOrUrl += "/";
-                return pathOrUrl + fileOrPath;
-            }
-            return Path.Combine(pathOrUrl, fileOrPath);
-        }
-
-        public string GetHtmlFromFileOrUrl(string fullPathOrUrl)
-        {
-
-            var result = "";
-            if (fullPathOrUrl.StartsWith("http"))
-            {
-                using (var webClient = new WebClient())
-                {
-                    result = webClient.DownloadString(fullPathOrUrl);
-                }
-            }
-            else
-            {
-                result = System.IO.File.ReadAllText(fullPathOrUrl);
-            }
-            return result;
-        }
+        
 
         public SiteCompare(string comparePath1, string comparePath2, string[] urlList, string selector, string[] excludeSelectors = null)
         {
@@ -124,13 +98,13 @@ namespace DryHtml.SiteDiff
             foreach (var url in urlList)
             {
 
-                var path1 = GetFullPath(comparePath1, url);
-                var path2 = GetFullPath(comparePath2, url);
+                var path1 = Utilities.GetFullPath(comparePath1, url);
+                var path2 = Utilities.GetFullPath(comparePath2, url);
 
-                var html1 = GetHtmlFromFileOrUrl(path1);
-                var html2 = GetHtmlFromFileOrUrl(path2);
+                var html1 = Utilities.GetHtmlFromFileOrUrl(path1);
+                var html2 = Utilities.GetHtmlFromFileOrUrl(path2);
 
-                var htmlDiff = new HtmlDiff.Comparer(html1, html2, selector, excludeSelectors);
+                var htmlDiff = new HtmlComparer(html1, html2, selector, excludeSelectors);
 
                 this.CompareResult.Add(new SiteCompareResult
                 {
@@ -158,7 +132,7 @@ namespace DryHtml.SiteDiff
                 var html1 = client.DownloadString(url1);
                 var html2 = client.DownloadString(url2);
 
-                var htmlDiff = new HtmlDiff.Comparer(html1, html2, selector);
+                var htmlDiff = new HtmlComparer(html1, html2, selector);
 
                 this.CompareResult.Add(new SiteCompareResult
                 {

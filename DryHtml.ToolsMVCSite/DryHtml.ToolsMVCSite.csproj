@@ -209,10 +209,6 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DryHtml.HtmlDiff\DryHtml.HtmlDiff.csproj">
-      <Project>{22315874-8db5-4d89-884d-4b73325b5e65}</Project>
-      <Name>DryHtml.HtmlDiff</Name>
-    </ProjectReference>
     <ProjectReference Include="..\DryHtml.SiteDiff\DryHtml.SiteDiff.csproj">
       <Project>{b577c670-083b-4bb9-9b14-f27240f9c655}</Project>
       <Name>DryHtml.SiteDiff</Name>

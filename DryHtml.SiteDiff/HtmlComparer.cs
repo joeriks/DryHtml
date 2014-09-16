@@ -5,16 +5,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DryHtml.HtmlDiff
+namespace DryHtml.SiteDiff
 {
-    public class Comparer
+    public class HtmlComparer
     {
         private string compareHtml;
         private string compareToHtml;
         private string selector;
         private string[] excludeSelectors;
 
-        public Comparer(string compareHtml, string compareToHtml, string selector = "*", string[] excludeSelectors = null)
+        public HtmlComparer(string compareHtml, string compareToHtml, string selector = "*", string[] excludeSelectors = null)
         {
             this.compareHtml = compareHtml;
             this.compareToHtml = compareToHtml;

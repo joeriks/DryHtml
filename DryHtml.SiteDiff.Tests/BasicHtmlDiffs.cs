@@ -2,16 +2,16 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using CsQuery;
 
-namespace DryHtml.HtmlDiff.Tests
+namespace DryHtml.SiteDiff.Tests
 {
     [TestClass]
-    public class BasicDiffs
+    public class BasicHtmlDiffs
     {
         [TestMethod]
         public void FindDiff()
         {
             var compareHtml = "<html><body><p>A</p></html>";
-            var x = new HtmlDiff.Comparer(compareHtml, "<html><p>B</p></body></html>");
+            var x = new HtmlComparer(compareHtml, "<html><p>B</p></body></html>");
             Assert.AreEqual("A", x.Diffs[0].compareSourceHtml);
             Assert.AreEqual(true, x.Diffs[0].isText);
             Assert.AreEqual("html > body > p", x.Diffs[0].selector);
@@ -30,7 +30,7 @@ namespace DryHtml.HtmlDiff.Tests
         public void FindNthChild()
         {
             var compareHtml = "<html><body><p>A</p><p>C</p></html>";
-            var x = new HtmlDiff.Comparer(compareHtml, "<html><p>A</p><p>B</p></body></html>");
+            var x = new HtmlComparer(compareHtml, "<html><p>A</p><p>B</p></body></html>");
             Assert.AreEqual("C", x.Diffs[0].compareSourceHtml);
             Assert.AreEqual(true, x.Diffs[0].isText);
             Assert.AreEqual("html > body > p:nth-child(2)", x.Diffs[0].selector);
@@ -47,7 +47,7 @@ namespace DryHtml.HtmlDiff.Tests
         {
             var html1 = "<html><body><p>A</p><p class='exclude'>C</p></html>";
             var html2 = "<html><p>A</p><p class='exclude'>D</p></body></html>";
-            var x = new HtmlDiff.Comparer(html1, html2);
+            var x = new HtmlComparer(html1, html2);
             Assert.AreEqual("C", x.Diffs[0].compareSourceHtml);
             Assert.AreEqual(true, x.Diffs[0].isText);
             Assert.AreEqual("html > body > p.exclude", x.Diffs[0].selector);
@@ -56,7 +56,7 @@ namespace DryHtml.HtmlDiff.Tests
 
             var excludeSelectors = new[] { ".exclude" };
 
-            var ex = new HtmlDiff.Comparer(html1, html2, "",excludeSelectors);
+            var ex = new HtmlComparer(html1, html2, "",excludeSelectors);
 
             Assert.AreEqual(0, ex.Diffs.Count);
 
