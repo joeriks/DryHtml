@@ -93,6 +93,12 @@ namespace DryHtml.ViewGen
 
             }
         }
+        public ViewGenerator(string prototypeHtml, string selector, Action<ViewGenerator> customGenerator)
+        {
+            this.prototypeHtml = prototypeHtml;
+            this.selector = selector;
+            customGenerator(this);
+        }
         public ViewGenerator(string prototypeHtml, Dictionary<string, string> modelDescriber)
         {
             this.prototypeHtml = prototypeHtml;
