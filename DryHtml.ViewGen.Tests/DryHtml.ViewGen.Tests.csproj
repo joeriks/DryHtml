@@ -55,6 +55,7 @@
     <Compile Include="JsonViewGenTests.cs" />
     <Compile Include="AutoViewTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TagCreationTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DryHtml.ViewGen\DryHtml.ViewGen.csproj">

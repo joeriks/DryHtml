@@ -14,21 +14,20 @@ namespace DryHtml.ViewExtractor.Tests
             // Arrange
 
             var prototypeHtml = System.IO.File.ReadAllText("SamplePrototype.html");
-            //var expectedResult = System.IO.File.ReadAllText("SampleGeneratedView.cshtml");
 
-            var viewStart = new ViewGen.ViewGenerator(prototypeHtml, "#people", gen =>
+            var vg = new ViewGen.ViewGenerator(prototypeHtml, new PrototypeExtractor("People", "#people", "", p =>
             {
-                gen.
-            });
-            
-            // Act
+                p.AddChildAt("PersonList", "ul", "li", "List<PersonList>", ul =>
+                {
+                    ul.AddChildNext("Name", "span"); // PersonList_Name(string name)
+                    ul.AddChildNext("Address", "span"); // PersonList_Address(string name)
+                    ul.AddChildNext("Description", "#text"); // 
+                    ul.AddChildNext("Email", "a");
+                });
+            }));
 
-            var generatedResult = new ViewGen.ViewGenerator(prototypeHtml, "#header", modelDictionary).CsHtmlView;
-
-            // Assert
-
-            Assert.AreEqual(expectedResult, generatedResult);
-
+            var model = vg.CsModel;
+            var view = vg.CsHtmlView;
 
         }
     }
