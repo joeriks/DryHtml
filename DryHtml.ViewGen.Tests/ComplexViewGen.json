@@ -17,7 +17,7 @@
                 "Name": "PersonList",
                 "Selector": "ul",
                 "ValueSelector": "li",
-                "Type": "List<PersonList>",
+                "Type": "List<Person>",
                 "Extractors": [
                     {
                         "Name": "Name",

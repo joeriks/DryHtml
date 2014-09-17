@@ -81,6 +81,36 @@ namespace DryHtml.ViewGen
         {
             var viewGenOptionsFile = System.IO.File.ReadAllText(jsonViewGenOptionsFileName);
             ViewGenList = JsonConvert.DeserializeObject<List<ViewGenOptions>>(viewGenOptionsFile);
+        }
+
+        public void addFromExtractors(PrototypeExtractor parent, List<Extractor> ex)
+        {
+
+            foreach (var ch in ex)
+            {
+                if (ch.Selector == ":next-child")
+                {
+                    ch.Selector = ">:nth-child(" + (parent.ChildExtractors.Count() + 1).ToString() + ")";
+                }
+                if (string.IsNullOrEmpty(ch.Type))
+                    ch.Type = "string";
+
+                var pr = new PrototypeExtractor
+                {
+                    Parent = parent,
+                    Name = ch.Name,
+                    Selector = ch.Selector,
+                    ValueSelector = ch.ValueSelector,
+                    Type = ch.Type,
+                    WrapNullCheck = true
+                };
+                if (ch.Extractors != null)
+                {
+                    addFromExtractors(pr, ch.Extractors);
+                }
+                parent.ChildExtractors.Add(pr);
+
+            }
 
         }
 
@@ -89,8 +119,26 @@ namespace DryHtml.ViewGen
             foreach (var x in ViewGenList)
             {
                 var prototypeHtml = System.IO.File.ReadAllText(x.ViewModel.Prototype);
-                var modelDescriber = x.Properties.ToDictionary(p => p.Name, p => p.Selector);
-                var viewGen = new ViewGenerator(prototypeHtml, x.ViewModel.Selector, modelDescriber, x.ViewModel.Name);
+                ViewGenerator viewGen = null;
+                if (x.Properties != null)
+                {
+                    var modelDescriber = x.Properties.ToDictionary(p => p.Name, p => p.Selector);
+                    viewGen = new ViewGenerator(prototypeHtml, x.ViewModel.Selector, modelDescriber, x.ViewModel.Name);
+                }
+                else
+                {
+                    var prototypeExtractor = new PrototypeExtractor
+                    {
+                        Name = x.ViewModel.Name,
+                        Selector = x.ViewModel.Selector,
+                        ValueSelector = ""
+                    };
+
+                    addFromExtractors(prototypeExtractor, x.Extractors);
+
+                    viewGen = new ViewGenerator(prototypeHtml, prototypeExtractor);
+
+                }
 
                 if (!string.IsNullOrEmpty(x.Output.View))
                 {
@@ -99,6 +147,7 @@ namespace DryHtml.ViewGen
                 if (!string.IsNullOrEmpty(x.Output.ViewModel))
                 {
                     System.IO.File.WriteAllText(OutputRootPath + "/" + x.Output.ViewModel, viewGen.CsModel);
+
                 }
 
             }
@@ -326,7 +375,13 @@ namespace DryHtml.ViewGen
         {
             var generatedCode = new StringBuilder();
 
-            generatedCode.AppendFormat(new string(' ', tabLevel * 2) + "public partial class {0} {{", prototypeExtractor.Name).AppendLine();
+            var typeName = prototypeExtractor.Name;
+            if (prototypeExtractor.Type !=null && prototypeExtractor.Type.StartsWith("List"))
+            {
+                typeName = prototypeExtractor.Type.Substring(5, prototypeExtractor.Type.Length - 6);
+            }
+
+            generatedCode.AppendFormat(new string(' ', tabLevel * 2) + "public partial class {0} {{", typeName).AppendLine();
             foreach (var prop in prototypeExtractor.ChildExtractors)
             {
                 if (prop.ChildExtractors.Any())
