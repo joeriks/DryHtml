@@ -198,12 +198,16 @@ namespace DryHtml.ViewGen
                     if (this.PrototypeExtractor != null)
                     {
                         helpers = new Dictionary<string, string>();
-                        generateCsHtmlFromPrototypeExtractor(this.PrototypeExtractor, this.prototypeHtml);
+                        var mainCode = generateCsHtmlFromPrototypeExtractor(this.PrototypeExtractor, this.prototypeHtml);
                         var code = new StringBuilder();
+
+                        code.AppendLine("@model " + this.PrototypeExtractor.Name);
+
                         foreach (var helper in helpers)
                         {
-                            code.AppendLine(helper.Value);                            
+                            code.AppendLine(helper.Value);
                         }
+                        code.AppendLine(mainCode);
                         csHtmlView = code.ToString();
                     }
                     else generateCshtml();
@@ -214,22 +218,25 @@ namespace DryHtml.ViewGen
 
         private Dictionary<string, string> helpers;
 
-        private string generateCsHtmlFromPrototypeExtractor(ViewExtractor.PrototypeExtractor prototypeExtractor, CQ outerCQ, string helperPrefix = "", string outerSelector = "")
+        private string generateCsHtmlFromPrototypeExtractor(ViewExtractor.PrototypeExtractor prototypeExtractor, CQ outerCQ, string helperPrefix = "", string outerSelector = "", string modelPrefix ="Model.")
         {
-            var innerCq = outerCQ.Select(outerSelector + " " + prototypeExtractor.Selector + " " + prototypeExtractor.ValueSelector);
-
+            var innerCq = outerCQ.Select(outerSelector + " " + prototypeExtractor.Selector + " " + prototypeExtractor.ValueSelector).First();
+            var wrapNullCheck = true;
             foreach (var prop in prototypeExtractor.ChildExtractors)
             {
 
-                var outerHtmlCq = outerCQ.Select(outerSelector + " " + prototypeExtractor.Selector + " " + prototypeExtractor.ValueSelector + " " + prop.Selector);
+                var firstSelector = (prototypeExtractor.Type != null && prototypeExtractor.Type.StartsWith("List")) ? ":first" : "";
+
+                var outerHtmlCq = outerCQ.Select(outerSelector + " " + prototypeExtractor.Selector + " " + prototypeExtractor.ValueSelector + firstSelector + " " + prop.Selector);
 
                 if (prop.ChildExtractors.Any())
-                    generateCsHtmlFromPrototypeExtractor(prop, outerHtmlCq, helperPrefix + "_" + prop.Name + "_", outerSelector + " " + prototypeExtractor.Selector + " " + prototypeExtractor.ValueSelector);
+                    generateCsHtmlFromPrototypeExtractor(prop, outerHtmlCq, helperPrefix + prop.Name + "_", outerSelector + " " + prototypeExtractor.Selector + " " + prototypeExtractor.ValueSelector + firstSelector);
 
                 var code = new StringBuilder();
                 var helperName = helperPrefix + prop.Name;
                 var helperSignature = helperName + "(" + prop.Type + " " + prop.Name + ")";
                 code.AppendLine("@helper " + helperSignature + " {");
+                if (prop.WrapNullCheck) code.AppendLine("if (" + prop.Name + "!=null){");
 
                 var valueCode = "@" + prop.Name + "";
 
@@ -238,27 +245,51 @@ namespace DryHtml.ViewGen
                     var childRender = new StringBuilder();
                     foreach (var child in prop.ChildExtractors)
                     {
-                        childRender.AppendLine("@" + helperName + "_" + child.Name + "(" + prop.Name + "." + child.Name + ")");
+                        childRender.AppendLine("@" + helperName + "_" + child.Name + "(item." + child.Name + ")");
                     }
                     valueCode = childRender.ToString();
-                    
+
                 }
 
                 if (prop.ValueSelector == "#text")
-                    outerHtmlCq.Select(outerSelector + " " + prototypeExtractor.Selector + " "  +prototypeExtractor.ValueSelector + " " + prop.Selector).Get(0).ChildNodes.Where(t=>t.NodeType == NodeType.TEXT_NODE && !string.IsNullOrWhiteSpace(t.NodeValue)).FirstOrDefault().NodeValue = valueCode;
+                    outerHtmlCq.Select(outerSelector + " " + prototypeExtractor.Selector + " " + prototypeExtractor.ValueSelector + " " + prop.Selector).Get(0).ChildNodes.Where(t => t.NodeType == NodeType.TEXT_NODE && !string.IsNullOrWhiteSpace(t.NodeValue)).FirstOrDefault().NodeValue = valueCode;
                 else
-                    outerHtmlCq.Select(outerSelector + " " + prototypeExtractor.Selector + " "  +prototypeExtractor.ValueSelector + " " + prop.Selector + " " + prop.ValueSelector).First().Html(valueCode);
+                {
+                    if (prop.Type.StartsWith("List"))
+                    {
+                        outerHtmlCq.Select(outerSelector + " " + prototypeExtractor.Selector + " " + prototypeExtractor.ValueSelector + " " + prop.Selector + " " + prop.ValueSelector).Html(valueCode);
+                        outerHtmlCq.Select(outerSelector + " " + prototypeExtractor.Selector + " " + prototypeExtractor.ValueSelector + " " + prop.Selector + " " + prop.ValueSelector).Each((i, d) =>
+                        {
+                            if (i > 0) d.OuterHTML = "";
+                        });
 
+                        var innerHtml = outerHtmlCq.Select(outerSelector + " " + prototypeExtractor.Selector + " " + prototypeExtractor.ValueSelector + " " + prop.Selector + " " + prop.ValueSelector).First().RenderSelection();
 
+                        var listCode = new StringBuilder();
+                        if (prop.WrapNullCheck) code.AppendLine("if (" + modelPrefix + prop.Name + "!=null){");
+                        listCode.AppendLine("foreach (var item in " + modelPrefix + prop.Name + ") {");
+                        listCode.AppendLine(innerHtml);
+                        listCode.AppendLine("}");
+                        if (prop.WrapNullCheck) code.AppendLine("}");
 
-                code.AppendLine(outerHtmlCq.First().RenderSelection());
+                        outerHtmlCq.Select(outerSelector + " " + prototypeExtractor.Selector + " " + prototypeExtractor.ValueSelector + " " + prop.Selector + " " + prop.ValueSelector)[0].OuterHTML=listCode.ToString();
+
+                    }
+                    else
+                    {
+                        outerHtmlCq.Select(outerSelector + " " + prototypeExtractor.Selector + " " + prototypeExtractor.ValueSelector + " " + prop.Selector + " " + prop.ValueSelector).Html(valueCode);
+                    }
+                }
+
+                code.AppendLine(outerHtmlCq.RenderSelection());
                 code.AppendLine("}");
+                if (prop.WrapNullCheck) code.AppendLine("}");
 
-                helpers.Add(helperSignature, code.ToString());
+                if (prototypeExtractor.Parent!=null) helpers.Add(helperSignature, code.ToString());
 
             }
 
-            
+
 
             return innerCq.RenderSelection();
 

@@ -13,6 +13,8 @@ namespace DryHtml.ViewExtractor
         public string Name { get; set; }
         public string Selector { get; set; }
         public string ValueSelector { get; set; }
+        public bool WrapNullCheck { get; set; }
+
 
         public PrototypeExtractor()
         {
@@ -36,7 +38,7 @@ namespace DryHtml.ViewExtractor
         }
         public PrototypeExtractor AddChildAt(string name, string selector, string valueSelector, string type, Action<PrototypeExtractor> self = null)
         {
-            var pe = new PrototypeExtractor { Name = name, Selector = selector, ValueSelector = valueSelector, Type = type, Parent = this };
+            var pe = new PrototypeExtractor { Name = name, Selector = selector, ValueSelector = valueSelector, Type = type, WrapNullCheck = true, Parent = this };
             if (self != null) self(pe);
             ChildExtractors.Add(pe);
             return this;
@@ -54,6 +56,7 @@ namespace DryHtml.ViewExtractor
         }
 
         public string Type { get; set; }
+
     }
 
 }
