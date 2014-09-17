@@ -50,11 +50,19 @@ namespace DryHtml.ViewGen
             public string Selector { get; set; }
             public string Type { get; set; } // ""=text, "Tag"
         }
-
+        public class Extractor
+        {
+            public string Name { get; set; }
+            public string Selector { get; set; }
+            public string ValueSelector { get; set; }
+            public string Type { get; set; } // ""=text, "Tag"
+            public List<Extractor> Extractors { get; set; }
+        }
         public class ViewGenOptions
         {
             public ViewModelOptions ViewModel { get; set; }
             public List<PropertyOptions> Properties { get; set; }
+            public List<Extractor> Extractors { get; set; }
             public OutputOptions Output { get; set; }
             public class ViewModelOptions
             {
@@ -238,7 +246,10 @@ namespace DryHtml.ViewGen
                 code.AppendLine("@helper " + helperSignature + " {");
                 if (prop.WrapNullCheck) code.AppendLine("if (" + prop.Name + "!=null){");
 
-                var valueCode = "@" + prop.Name + "";
+                var valueCode = "@" + prop.Name;
+
+                if (prototypeExtractor.Parent == null)
+                    valueCode = "@" + modelPrefix + prop.Name;
 
                 if (prop.ChildExtractors.Any())
                 {
@@ -267,7 +278,7 @@ namespace DryHtml.ViewGen
 
                         var listCode = new StringBuilder();
                         if (prop.WrapNullCheck) code.AppendLine("if (" + modelPrefix + prop.Name + "!=null){");
-                        listCode.AppendLine("foreach (var item in " + modelPrefix + prop.Name + ") {");
+                        listCode.AppendLine("@foreach (var item in " + modelPrefix + prop.Name + ") {");
                         listCode.AppendLine(innerHtml);
                         listCode.AppendLine("}");
                         if (prop.WrapNullCheck) code.AppendLine("}");

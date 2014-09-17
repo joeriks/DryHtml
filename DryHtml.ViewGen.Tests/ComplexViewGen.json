@@ -1,0 +1,50 @@
+﻿[
+    {
+        "ViewModel": {
+            "Prototype": "SamplePrototype.html",
+            "Selector": "#people",
+            "Name": "PeopleViewModel",
+            "ValueSelector": ""
+        },
+        "Extractors": [
+            {
+                "Name": "Introduction",
+                "Selector": "p",
+                "ValueSelector": "#text",
+                "Type": "string"
+            },
+            {
+                "Name": "PersonList",
+                "Selector": "ul",
+                "ValueSelector": "li",
+                "Type": "List<PersonList>",
+                "Extractors": [
+                    {
+                        "Name": "Name",
+                        "Selector": ":next-child",
+                        "ValueSelector": "span"
+                    },
+                    {
+                        "Name": "Address",
+                        "Selector": ":next-child",
+                        "ValueSelector": "span"
+                    },
+                    {
+                        "Name": "Description",
+                        "Selector": ":next-child",
+                        "ValueSelector": "#text"
+                    },
+                    {
+                        "Name": "Email",
+                        "Selector": ":next-child",
+                        "ValueSelector": "a"
+                    }
+                ]
+            }
+        ],
+        "Output": {
+            "View": "Views/PeopleViewModel.cshtml",
+            "ViewModel": "Models/PeopleViewModel.cs"
+        }
+    }
+]

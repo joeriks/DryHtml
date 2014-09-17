@@ -1,0 +1,60 @@
+﻿@model PeopleViewModel
+@helper PersonList_Name(string Name)
+{
+    if (Name != null)
+    {
+        <div>
+            <strong>Name:</strong>
+            <span>@Name</span>
+        </div>
+    }
+}
+
+@helper PersonList_Address(string Address)
+{
+    if (Address != null)
+    {
+        <div>
+            <strong>Address:</strong>
+            <span>@Address</span>
+        </div>
+    }
+}
+
+@helper PersonList_Description(string Description)
+{
+    if (Description != null)
+    {
+        <div>
+            <strong>Description:</strong>@Description
+        </div>
+    }
+}
+
+@helper PersonList_Email(string Email)
+{
+    if (Email != null)
+    {
+        <div>
+            <strong>Email:</strong>
+            <a href="mailto:email@email.com">@Email</a>
+        </div>
+    }
+}
+
+<div id="people">
+    <p>@Model.Introduction</p>
+    <ul>
+        @foreach (var item in Model.PersonList)
+        {
+            <li>
+                @PersonList_Name(item.Name)
+                @PersonList_Address(item.Address)
+                @PersonList_Description(item.Description)
+                @PersonList_Email(item.Email)
+            </li>
+        }
+
+
+    </ul>
+</div>

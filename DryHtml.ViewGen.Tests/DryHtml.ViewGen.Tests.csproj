@@ -52,6 +52,7 @@
   <ItemGroup>
     <Compile Include="ComplexSelectorsTest.cs" />
     <Compile Include="DictionaryViewTests.cs" />
+    <Compile Include="ComplexJsonViewGenTests.cs" />
     <Compile Include="JsonViewGenTests.cs" />
     <Compile Include="AutoViewTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -64,6 +65,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="SampleGeneratedComplexView.cshtml" />
     <None Include="SampleGeneratedStronglyTypedView2.cshtml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -76,9 +78,15 @@
     <None Include="SamplePrototype.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="ComplexViewGen.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="ViewGen.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="SampleGeneratedViewModel.cs" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

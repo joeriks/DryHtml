@@ -15,8 +15,9 @@ namespace DryHtml.ViewExtractor.Tests
 
             var prototypeHtml = System.IO.File.ReadAllText("SamplePrototype.html");
 
-            var vg = new ViewGen.ViewGenerator(prototypeHtml, new PrototypeExtractor("People", "#people", "", p =>
+            var vg = new ViewGen.ViewGenerator(prototypeHtml, new PrototypeExtractor("PeopleViewModel", "#people", "", p =>
             {
+                p.AddChildAt("Introduction", "p", "#text", "string");
                 p.AddChildAt("PersonList", "ul", "li", "List<PersonList>", ul =>
                 {
                     ul.AddChildNext("Name", "span"); // PersonList_Name(string name)
