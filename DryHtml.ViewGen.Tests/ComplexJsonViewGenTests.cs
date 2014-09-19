@@ -26,6 +26,23 @@ namespace DryHtml.Tests
 
         }
 
+        [TestMethod]
+        [DeploymentItem("ComplexViewGen2.json")]
+        [DeploymentItem("SamplePrototype2.html")]
+        public void ComplexViewGen2()
+        {
+
+            // Arrange                                   
+            var generation = new ViewGen.ViewGenerator("ComplexViewGen2.json");
+            generation.OutputRootPath = @"c:\data\";
+
+            // Act            
+            generation.GenerateAll();
+
+            // Assert
+            // Manually check c:\data\ :-p
+
+        }
 
     }
 }

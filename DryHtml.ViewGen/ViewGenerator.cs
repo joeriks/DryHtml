@@ -277,8 +277,9 @@ namespace DryHtml.ViewGen
 
         private string generateCsHtmlFromPrototypeExtractor(ViewExtractor.PrototypeExtractor prototypeExtractor, CQ outerCQ, string helperPrefix = "", string outerSelector = "", string modelPrefix ="Model.")
         {
-            var innerCq = outerCQ.Select(outerSelector + " " + prototypeExtractor.Selector + " " + prototypeExtractor.ValueSelector).First();
-            var wrapNullCheck = true;
+            var selector = outerSelector + " " + prototypeExtractor.Selector + " " + prototypeExtractor.ValueSelector;
+            var innerCq = (selector.Trim() == "") ? outerCQ : outerCQ.Select(selector).First();
+            
             foreach (var prop in prototypeExtractor.ChildExtractors)
             {
 

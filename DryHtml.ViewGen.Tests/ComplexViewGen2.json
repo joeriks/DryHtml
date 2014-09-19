@@ -1,0 +1,55 @@
+﻿[
+    {
+        "ViewModel": {
+            "Prototype": "SamplePrototype2.html",
+            "Selector": "",
+            "Name": "SamplePrototype2ViewModel",
+            "ValueSelector": ""
+        },
+        "Extractors": [
+            {
+                "Name": "Header",
+                "Selector": "h1",
+                "ValueSelector": "#text",
+                "Type": "string"
+            },
+            {
+                "Name": "Description",
+                "Selector": "div > p",
+                "ValueSelector": "#text"
+            },
+            {
+                "Name": "CompanyList",
+                "Selector": "ul",
+                "ValueSelector": "li",
+                "Type": "List<Company>",
+                "Extractors": [
+                    {
+                        "Name": "Name",
+                        "Selector": "div > h2",
+                        "ValueSelector": "a #text"
+                    }/*,
+                    {
+                        "Name": "Href",
+                        "Selector": "div > h2 > a",
+                        "ValueSelector": "@href"
+                    },
+                    {
+                        "Name": "Href",
+                        "Selector": "div > div > a",
+                        "ValueSelector": "@href"
+                    },
+                    {
+                        "Name": "LogoImg",
+                        "Selector": "div.logo > a",
+                        "ValueSelector": "img @src"
+                    }*/
+                ]
+            }
+        ],
+        "Output": {
+            "View": "Views/SamplePrototype2.cshtml",
+            "ViewModel": "Models/SamplePrototype2.cs"
+        }
+    }
+]
