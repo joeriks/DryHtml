@@ -194,5 +194,20 @@ namespace DryHtml.TVK.Tests
             var expectedResult = "[Top Children:[Child Children:][Second child Children:]]";
             Assert.AreEqual(expectedResult, result);
         }
+        [TestMethod]
+        public void TestRecursive2()
+        {
+            var p = new Node
+            {
+                Name = "Top",
+                Children = new List<Node> { 
+                new Node { Name = "Child" }, 
+                new Node { Name = "Second child" } }
+            };
+            var result = p.Format("[{Name} Children:{Children}]");
+
+            var expectedResult = "[Top Children:[Child Children:][Second child Children:]]";
+            Assert.AreEqual(expectedResult, result);
+        }
     }
 }
